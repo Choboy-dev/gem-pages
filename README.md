@@ -16,10 +16,10 @@ The buttons in the Figma file are not links. On this page they point at `#` unti
 
 ## Live demo + repo links
 
-- Live demo: `https://YOUR-USERNAME.github.io/gem-pages/`
-- Repository: `https://github.com/YOUR-USERNAME/gem-pages`
+- Live demo: [choboy-dev.github.io/gem-pages](https://choboy-dev.github.io/gem-pages/)
+- Repository: [github.com/Choboy-dev/gem-pages](https://github.com/Choboy-dev/gem-pages)
 
-Replace `YOUR-USERNAME` after the GitHub repository exists. The site is published from the repository root, so there is no `/docs` folder in the URL.
+The site is published by GitHub Pages from the root of the `main` branch.
 
 ## File structure
 
