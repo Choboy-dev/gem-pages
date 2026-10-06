@@ -1,150 +1,150 @@
 # Happy Dog Bites — nutrition page sections
 
-This is a Customer Success technical test for GemCommerce. It turns three sections from the Figma page into a live HTML page, and turns the middle section into a Shopify theme section a merchant can edit without touching code.
+My technical test for the Customer Success Associate role at GemCommerce. I built three sections from the Figma page as a live HTML/CSS page, and turned the main one (Nutrition highlights) into a Shopify section that a merchant can edit without touching code.
 
 ## Overview
 
-The page is three blocks from the Figma frame “Home page”:
+The page has three blocks, all from the Figma "Home page" frame:
 
-1. **What makes us different** — a centred heading, four short features around a bowl photo, a button, a guarantee line, and payment marks.
-2. **Nutrition highlights** — the required section. A heading, a paragraph, three percentage stats, a button, and a photo of a dog with a bag of Happy Dog Bites.
-3. **Digestive health** — two rows that alternate photo and text.
+1. **What makes us different** — centred heading, four features around a bowl photo, a button, the guarantee line and payment icons.
+2. **Nutrition highlights** — the main section for the test. Heading, paragraph, three percentage stats, a button, and the photo of the dog with the Happy Dog Bites bag.
+3. **Digestive health** — two image/text rows that swap sides.
 
-The same colours, type sizes, and spacing are stored once, at the top of `styles.css`, and reused by every section. The Shopify file repeats the nutrition tokens so the section still looks right when it is dropped into a theme on its own.
+All colours, font sizes and spacing live in one place at the top of `styles.css`, and every section uses them. The Shopify file has its own copy of the values it needs, so it still looks right when added to any theme.
 
-The buttons in the Figma file are not links. On this page they point at `#` until a real product URL is added. Search the project for `TODO` to find them.
+The buttons in Figma don't have a link, so for now they point to `#`. Search for `TODO` to find them.
 
 ## Live demo + repo links
 
 - Live demo: [choboy-dev.github.io/gem-pages](https://choboy-dev.github.io/gem-pages/)
 - Repository: [github.com/Choboy-dev/gem-pages](https://github.com/Choboy-dev/gem-pages)
 
-The site is published by GitHub Pages from the root of the `main` branch.
+Hosted on GitHub Pages from the root of the `main` branch.
 
 ## File structure
 
 ```
 gem-pages/
 ├── index.html          The page
-├── styles.css          All layout and visual tokens
-├── .nojekyll           Tells GitHub Pages to publish the files as they are
-├── assets/             Photos, icons, payment marks, favicon
+├── styles.css          All styles and design values
+├── .nojekyll           Tells GitHub Pages to serve the files as-is
+├── assets/             Photos, icons, payment logos, favicon
 └── shopify/
     └── sections/
         └── nutrition-highlights.liquid
 ```
 
-There is no `script.js`. Hover, focus, and the reduced-motion setting are all done in CSS.
+I didn't need any JavaScript. Hover, focus and reduced-motion are all handled in CSS.
 
 ## HTML structure and semantic choices
 
-The page is one `<main>`. Each block is a `<section>`.
+Everything sits inside one `<main>`, and each block is a `<section>`.
 
-- The first two sections are named with `aria-labelledby`, pointing at their `<h2>`. A screen reader can then jump to “What makes us different” or “Nutrition is the foundation…”.
-- The third section holds two articles, each with its own `<h2>`, so it uses `aria-label="Digestive health"` instead of borrowing one of those headings.
-- Feature titles are `<h3>` elements, because they sit under the section heading.
-- The four features, the three stats, and the payment marks are lists (`<ul>`). They are groups of peer items, not loose boxes.
-- The “Key Points:” line labels the stat list with `aria-labelledby`.
-- Every call to action is an `<a>` styled as a button, not a `<div>` with a click handler.
-- Photos have a description of what is in the picture. Icons next to a visible title are decorative, so their alt text is empty and they are not announced twice.
+- The first two sections use `aria-labelledby` pointing to their `<h2>`, so screen reader users can jump straight to them by name.
+- The third section has two `<article>`s, each with its own `<h2>`, so I gave the section an `aria-label` ("Digestive health") instead.
+- Feature titles are `<h3>` since they sit under the section heading.
+- The features, stats and payment icons are all `<ul>` lists, because they're groups of similar items.
+- "Key Points:" labels the stats list through `aria-labelledby`.
+- Buttons are `<a>` tags styled as buttons, since they take you somewhere.
+- Photos have alt text describing what's in them. The small feature icons have empty alt text because the title next to them already says what they mean.
 
 ## CSS approach
 
-Custom properties at the top of `styles.css` hold every shared decision: colours, the font stack, type sizes, line height, letter spacing, the 1170px content width, the 570px column, and the corner radii. Changing the accent colour in that one place updates the percentages, both buttons, and the hover colour.
+The custom properties at the top of `styles.css` hold the colours, font, type sizes, line heights, letter spacing, the 1170px container, the 570px column and the corner radii. For example, changing `--color-accent` updates the percentages, both buttons and the hover colour at once.
 
-Class names follow BEM. A block is `nutrition`, an element is `nutrition__stat`, and a modifier is `benefit--media-first`. There is no Bootstrap, Tailwind, or other framework.
+Class names follow BEM: `nutrition` is the block, `nutrition__stat` is an element, `benefit--media-first` is a modifier. No frameworks.
 
-Layout uses Flexbox and Grid only. The desktop content width is 1170px, which is what the Figma frame uses inside the 1920px artboard (570 + 30 + 570).
+Layout is just Flexbox and Grid. The 1170px container comes straight from the Figma frame: two 570px columns with a 30px gap.
 
 ## Responsive strategy
 
-The page is written mobile-first. Three stops:
+I wrote it mobile-first, with two breakpoints:
 
 | Width | What changes |
 | --- | --- |
-| Under 768px | One column. Type uses `clamp()` so headings shrink smoothly instead of jumping. Buttons are full width. Page padding is 20px, so nothing needs a sideways scroll at 320px. |
-| 768px to 1199px | The nutrition and digestive rows stay two columns, with a smaller gap (24px instead of 30px). The “what makes us different” row stays three columns, with a smaller bowl, so the photo remains in the centre. |
-| 1200px and up | Matches the Figma frame: 40px semibold headings, 33px bold percentages, 30px column gap, 80px section padding, 48px between the nutrition heading group and the stats, 32px of padding on the side of the text that faces the photo. |
+| Under 768px | Single column. Headings scale with `clamp()`. Buttons are full width. 20px side padding, no horizontal scroll down to 320px. |
+| 768px – 1199px | Nutrition and digestive rows go two columns with a 24px gap. The "different" row keeps its three columns with a smaller bowl in the middle. |
+| 1200px and up | Matches Figma: 40px headings, 33px percentages, 30px column gap, 80px section padding, 48px between heading group and stats, 32px padding on the text column. |
 
-Headings use `clamp()` below 1200px and stop at the Figma size (40px) once the screen is wide enough. That is why a heading can be fluid and still match the file on a desktop.
+Headings use `clamp()` so they scale down smoothly on smaller screens, and they max out at the Figma size (40px) on desktop.
 
-**Why the photo sits under the text on a phone.** These blocks are arguments, not a hero banner. The heading is the point of the section. Putting it first means a person sees the claim, the proof, and the button before a tall photo pushes them down the page. From 768px up, the digestive row that has its photo on the left in Figma moves the photo back to the left with CSS `order`. The heading stays first in the HTML for screen readers.
+**Why the image goes below the text on mobile:** the heading and stats are the message of each section, so I wanted people to read them and see the button before scrolling past a big photo. On tablet and up, the first digestive row moves its photo back to the left (like in Figma) using CSS `order`, while the HTML keeps the text first for screen readers.
 
 ## Accessibility
 
-- Text colour `#161723` on white is about 17.8:1. Body text `#424153` on white is about 9.9:1, and about 9.4:1 on the grey section. Both pass WCAG AA.
-- Photos have useful alt text. Decorative icons do not.
-- Buttons and the skip link show a dark outline on `:focus-visible`, so mouse users do not see a ring and keyboard users do.
-- The button darkens and lifts by 1px on hover. If the visitor has asked the system to reduce motion, the lift and the transition are turned off. The colour change stays, because that is not movement.
-- **Contrast problem, kept on purpose.** The Figma accent is `#EE6F4B`. White button text on that colour is **3.00:1**. Normal text (this button is 16px) needs **4.5:1**, so it fails WCAG AA. The same colour on the grey background (`#F8F8F8`) is **2.82:1**, so the big percentages fail the 3:1 bar for large text as well. The page still uses `#EE6F4B`, because the test asks for the Figma colour. The closest replacement on the same hue that passes is **`#BC583B`** (about 4.57:1 for white text). In the Shopify section this is one line: `--color-accent`.
+- Heading text (`#161723`) on white is about 17.8:1 and body text (`#424153`) is about 9.9:1 (9.4:1 on the grey background). Both pass WCAG AA.
+- Photos have alt text, decorative icons don't.
+- Buttons and the skip link get a dark outline with `:focus-visible`, so keyboard users can see where they are.
+- On hover the button gets a bit darker and lifts 1px. If the user has reduced motion turned on, the lift and transition are removed (the colour change stays).
+- **One contrast issue I left in on purpose.** The Figma accent `#EE6F4B` with white text is only **3.00:1**, and 16px text needs **4.5:1** to pass AA. The percentages on the grey background are **2.82:1**, which is below the 3:1 needed for large text. I kept the original colour so the page matches the design, but I'd suggest **`#BC583B`** instead. It's the same hue and gets about 4.57:1 with white text. In the Shopify section that's a one-line change to `--color-accent`.
 
 ## Performance
 
-- Photos are WebP, exported at 2x for sharp screens, with a smaller file in `srcset` for phones. The browser picks one.
-- Every photo has `width` and `height`, so the layout does not jump when the file arrives.
-- The bowl is the first large image, so it loads immediately. The photos lower on the page use `loading="lazy"`.
-- There is no JavaScript and no CSS framework. Icon files are the small SVGs from the Figma frame.
-- A `<picture>` element was not needed: every photo is already WebP, and `srcset` is enough to offer two sizes.
+- Photos are WebP, exported at 2x, with a smaller version in `srcset` for phones.
+- Every image has `width` and `height` set, so nothing jumps around while loading.
+- The bowl image is near the top so it loads straight away. Everything further down uses `loading="lazy"`.
+- No JavaScript, no framework. Icons are small SVGs exported from Figma.
+- I didn't use `<picture>` because all the images are already WebP and `srcset` covers the sizes.
 
 ## Shopify section
 
-The file is `shopify/sections/nutrition-highlights.liquid`. It is the nutrition block only, which is the section the brief asked for as a theme section. The other two blocks stay on the HTML page.
+The file is `shopify/sections/nutrition-highlights.liquid`. It's the Nutrition highlights block.
 
-What a merchant can edit in the theme editor:
+Settings available in the theme editor:
 
-| Setting | What it changes |
+| Setting | What it does |
 | --- | --- |
-| Heading | The `<h2>` |
-| Body text | The paragraph under the heading |
-| Key points label | The “Key Points:” line. Clear it to hide the label. |
-| Image | The photo, chosen with the image picker |
-| Button label | The button words. Clear it to hide the button. |
+| Heading | The main heading |
+| Body text | The paragraph under it |
+| Key points label | The "Key Points:" text. Leave empty to hide it. |
+| Image | The photo, picked from the store's files |
+| Button label | The button text. Leave empty to hide the button. |
 | Button link | Where the button goes |
-| Background | The section colour. The design uses `#F8F8F8`. |
-| Padding top / padding bottom | Space above and below the section, 0–120px. The design uses 80 and 80. |
-| Image position | Right (the design) or left |
+| Background | Section background colour (`#F8F8F8` in the design) |
+| Padding top / bottom | Space above and below, 0–120px (80px in the design) |
+| Image position | Right (as in the design) or left |
 
-Each percentage is a **Stat** block, with a percentage and a sentence. Merchants can add, delete, or reorder stats. The line between stats is drawn automatically, and the last stat does not get a line under it. Adding the section from **Add section** inserts the three stats from the design, because the file includes a preset named “Nutrition highlights”.
+Each stat is a **Stat** block with a percentage and a short text, so merchants can add, remove or reorder them. The divider lines between stats are added automatically. The section has a preset, so when you add it from **Add section** it already comes with the three stats from the design.
 
-The photo uses Shopify’s `image_url` and `image_tag`, so the theme serves a `srcset`, a `sizes` list, and lazy loading. If the image has no alt text, the heading is used so the photo is still described.
+The image uses Shopify's `image_url` and `image_tag` filters, which output a `srcset`, `sizes` and lazy loading. If the merchant hasn't added alt text to the image, the heading is used as a fallback.
 
-CSS is scoped to `#shopify-section-{{ section.id }}`. Two copies of this section on one page do not restyle each other, and they do not restyle the rest of the theme.
+All the CSS is scoped to `#shopify-section-{{ section.id }}`, so you can add the section twice on the same page without the two clashing, and it won't affect the rest of the theme.
 
-On a phone, the writing stays above the photo so the heading is read first. The left/right choice applies from 768px upward.
+On mobile the text stays above the image. The left/right setting applies from 768px up.
 
-The section loads Inter Tight so a stock theme still matches the file. If the store already has a brand font, move that font link into `theme.liquid` (so it is not repeated) and change the `--font-family` line so the theme font comes first.
+The section loads Inter Tight so it matches the design on any theme. If the store has its own brand font, I'd move the font link into `theme.liquid` and put the theme font first in `--font-family`.
 
-## Design decisions and assumptions
+## Design decisions & assumptions
 
-- Values that are visible in the Figma file are used as-is: background `#F8F8F8`, accent `#EE6F4B`, title `#161723`, body `#424153`, line `#E3E3E8`, Inter Tight, 6px button corners, 10px photo corners, 80px vertical padding, 30px column gap.
-- The content column is 1170px, not a guessed 1140. That is 570 + 30 + 570, which is how the frame is built.
-- Button links are `#` because the Figma buttons have no URL.
-- The accent colour fails contrast. It is unchanged, and a passing replacement is listed above.
-- Payment marks are the five in the file, in this order: PayPal, Visa, Mastercard, Apple Pay, Google Pay. They are not links.
-- The favicon is a simple coral mark so the browser tab is not empty. It is not a logo from the file.
+- I used the values straight from Figma: background `#F8F8F8`, accent `#EE6F4B`, title `#161723`, body `#424153`, divider `#E3E3E8`, Inter Tight, 6px button radius, 10px image radius, 80px vertical padding, 30px column gap.
+- The container is 1170px (570 + 30 + 570), which is how the Figma frame is laid out.
+- Buttons link to `#` because the design doesn't include a URL.
+- I kept the accent colour as designed even though it fails contrast. The suggested fix is above.
+- Payment icons are the five from the design, in the same order: PayPal, Visa, Mastercard, Apple Pay, Google Pay.
+- I added a simple coral favicon so the browser tab isn't blank. It isn't from the design.
 
 ## How to run locally
 
-The page is static. From the project folder:
+It's a static site. From the project folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`. You can also double-click `index.html`. A small server is the better check, because it matches the way GitHub Pages will serve the files.
+Then open `http://localhost:8000`. Opening `index.html` directly also works, but a local server is closer to how GitHub Pages serves it.
 
-You need a network connection the first time, so Inter Tight can download. If it cannot, the page falls back to Inter and then the system sans-serif.
+The font loads from Google Fonts, so you need an internet connection. Without it, the page falls back to Inter or the system font.
 
 ## How to install the Liquid section in a theme
 
 1. In Shopify admin, go to **Online Store → Themes**.
-2. On the theme you want, click **⋯ → Edit code**. Do this on a duplicate theme first if the store is live.
+2. On your theme, click **⋯ → Edit code**. If the store is live, duplicate the theme first and work on the copy.
 3. Under **Sections**, click **Add a new section**.
-4. Name it `nutrition-highlights`. Shopify saves it as `sections/nutrition-highlights.liquid`.
-5. Replace the contents with the file in this repository: `shopify/sections/nutrition-highlights.liquid`.
-6. Save.
-7. Open **Customize** on that theme.
-8. On the page where the section should appear, click **Add section** and choose **Nutrition highlights**.
-9. Upload the dog photo (the file in this repo is `assets/dog-nutrition.webp`), set the button link, and adjust padding or image side if you want.
+4. Name it `nutrition-highlights`.
+5. Replace everything in the new file with the contents of `shopify/sections/nutrition-highlights.liquid` from this repo.
+6. Click **Save**.
+7. Go back and click **Customize** on the theme.
+8. On the page you want, click **Add section** and pick **Nutrition highlights**.
+9. Upload the dog photo (`assets/dog-nutrition.webp` in this repo), add the button link, and adjust the padding or image side if needed.
 
-No extra CSS file is required. The section carries its own styles. To remove it, delete the section in the customizer, or delete the liquid file from the theme code.
+The section includes its own styles, so you don't need any extra CSS files. To remove it, delete the section in the customizer or delete the file from the theme code.

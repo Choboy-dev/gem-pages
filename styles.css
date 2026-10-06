@@ -1,8 +1,8 @@
 /*
-  Tokens from Figma file Product page - POD (Copy) (Copy),
-  frame "Home page" (1920px). Desktop sizes lock in at 1200px.
-  Button and stat accent #EE6F4B is the file colour. It does not
-  meet WCAG AA for white button text (3.00:1). See README.
+  Values taken from the Figma "Home page" frame (1920px wide).
+  Desktop sizes kick in at 1200px.
+  Note: white text on #EE6F4B is only 3:1, below WCAG AA. Kept it to
+  match the design, fix is in the README.
 */
 
 :root {
@@ -80,7 +80,7 @@ ul {
   list-style: none;
 }
 
-/* Off-screen until focused, so keyboard users can skip the first section. */
+/* Hidden until tabbed to */
 .skip-link {
   position: absolute;
   left: var(--space-page);
@@ -139,7 +139,7 @@ ul {
   }
 }
 
-/* Shared measure: the Figma content column is 1170px on a 1920 canvas. */
+/* 1170px = two 570px columns + 30px gap, same as Figma */
 .difference__inner,
 .nutrition__grid,
 .benefits__inner {
@@ -372,10 +372,7 @@ ul {
   aspect-ratio: 570 / 480;
 }
 
-/*
-  Tablet keeps the desktop relationships and only tightens the gaps.
-  The difference row stays three columns so the bowl remains the centre.
-*/
+/* Tablet: same layout as desktop, just tighter. Bowl stays in the middle. */
 @media (min-width: 768px) {
   :root {
     --space-page: 1.5rem;
@@ -412,7 +409,7 @@ ul {
     gap: 2rem;
   }
 
-  /* Heading stays first in the HTML. From tablet up, the photo sits on the left. */
+  /* Photo goes left visually, text stays first in the HTML for screen readers */
   .benefit--media-first .benefit__image {
     order: -1;
   }
@@ -449,7 +446,7 @@ ul {
     gap: 30px;
   }
 
-  /* 32px sits on the side that faces the photo, matching the Figma column padding. */
+  /* Figma has 32px padding on the text column, on the side next to the image */
   .nutrition__content,
   .benefit:not(.benefit--media-first) .benefit__content {
     padding-right: 32px;
