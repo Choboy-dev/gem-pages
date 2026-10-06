@@ -1,0 +1,419 @@
+{% comment %}
+  Nutrition highlights
+  Online Store 2.0 section. The theme editor wraps this file in a div
+  (see the schema "tag"). The <section> below is the landmark, so it can
+  carry aria-labelledby without nesting two sections.
+  Colours and type match the static page. Swap the font-family line if
+  the merchant's theme font should win over Inter Tight.
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --color-title: #161723;
+    --color-text: #424153;
+    --color-accent: #ee6f4b;
+    --color-accent-hover: #d66444;
+    --color-on-accent: #ffffff;
+    --color-line: #e3e3e8;
+    --font-family: "Inter Tight", var(--font-body-family), Inter, "Segoe UI", sans-serif;
+    --text-heading: clamp(1.75rem, 0.9rem + 2.4vw, 2.5rem);
+    --text-stat: clamp(1.75rem, 1.2rem + 1.5vw, 2.0625rem);
+    --text-subhead: clamp(1.0625rem, 0.95rem + 0.4vw, 1.1875rem);
+    --text-body: 1rem;
+    --leading-heading: 1.2;
+    --leading-body: 1.5;
+    --tracking-heading: 0.25px;
+    --tracking-body: 0.5px;
+    --content-max: 1170px;
+    --column: 570px;
+    --radius-button: 6px;
+    --radius-media: 10px;
+    --motion-duration: 180ms;
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #shopify-section-{{ section.id }} .nutrition {
+    background: {{ section.settings.background }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    color: var(--color-title);
+    font-family: var(--font-family);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__grid {
+    width: min(var(--content-max), calc(100% - 2.5rem));
+    margin-inline: auto;
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__intro,
+  #shopify-section-{{ section.id }} .nutrition__points {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__heading {
+    margin: 0;
+    color: var(--color-title);
+    font-size: var(--text-heading);
+    font-weight: 600;
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__lead,
+  #shopify-section-{{ section.id }} .nutrition__desc {
+    margin: 0;
+    color: var(--color-text);
+    font-weight: 400;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__label {
+    margin: 0;
+    font-size: var(--text-subhead);
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__stat:not(:last-child) {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__value {
+    flex: none;
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--text-stat);
+    font-weight: 700;
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-heading);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__desc {
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-media);
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .nutrition__image--placeholder {
+    background: #ececec;
+  }
+
+  #shopify-section-{{ section.id }} .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 20px;
+    border-radius: var(--radius-button);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background-color var(--motion-duration) var(--motion-ease),
+      transform var(--motion-duration) var(--motion-ease),
+      box-shadow var(--motion-duration) var(--motion-ease);
+  }
+
+  #shopify-section-{{ section.id }} .btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(22, 23, 35, 0.12);
+  }
+
+  #shopify-section-{{ section.id }} .btn:focus-visible {
+    outline: 2px solid var(--color-title);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .nutrition__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .nutrition__stat {
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .btn {
+      padding-inline: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .nutrition--image-left .nutrition__media {
+      order: -1;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    #shopify-section-{{ section.id }} .nutrition__grid {
+      grid-template-columns: var(--column) var(--column);
+      justify-content: center;
+      gap: 30px;
+    }
+
+    #shopify-section-{{ section.id }} .nutrition__content {
+      gap: 3rem;
+      padding-right: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .nutrition--image-left .nutrition__content {
+      padding-right: 0;
+      padding-left: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .nutrition__stat {
+      gap: 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .btn {
+      transition: none;
+    }
+
+    #shopify-section-{{ section.id }} .btn:hover {
+      transform: none;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="nutrition{% if section.settings.image_position == 'left' %} nutrition--image-left{% endif %}"
+  aria-labelledby="nutrition-heading-{{ section.id }}"
+>
+  <div class="nutrition__grid">
+    <div class="nutrition__content">
+      <div class="nutrition__intro">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="nutrition__heading" id="nutrition-heading-{{ section.id }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.body != blank -%}
+          <p class="nutrition__lead">{{ section.settings.body | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="nutrition__points">
+          {%- if section.settings.points_label != blank -%}
+            <p class="nutrition__label" id="nutrition-points-{{ section.id }}">
+              {{ section.settings.points_label | escape }}
+            </p>
+          {%- endif -%}
+          <ul
+            class="nutrition__stats"
+            {% if section.settings.points_label != blank %}
+              aria-labelledby="nutrition-points-{{ section.id }}"
+            {% endif %}
+          >
+            {%- for block in section.blocks -%}
+              <li class="nutrition__stat" {{ block.shopify_attributes }}>
+                <p class="nutrition__value">{{ block.settings.percentage | escape }}</p>
+                <p class="nutrition__desc">{{ block.settings.text | escape }}</p>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a class="btn" href="{{ section.settings.button_link | default: '#' }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="nutrition__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1140
+          | image_tag:
+            widths: '375, 570, 750, 1140',
+            sizes: '(min-width: 1200px) 570px, (min-width: 768px) 46vw, calc(100vw - 40px)',
+            loading: 'lazy',
+            class: 'nutrition__image',
+            alt: section.settings.image.alt | default: section.settings.heading
+        }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'nutrition__image nutrition__image--placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nutrition highlights",
+  "tag": "div",
+  "class": "nutrition-highlights",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Nutrition is the foundation for longer, healthier lives in dogs."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life."
+    },
+    {
+      "type": "text",
+      "id": "points_label",
+      "label": "Key points label",
+      "default": "Key Points:"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Give your furry friend the gift of wholesome nutrition"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#F8F8F8"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "percentage",
+          "label": "Percentage",
+          "info": "Include the % sign, for example 97%.",
+          "default": "97%"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nutrition highlights",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": "97%",
+            "text": "Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": "84%",
+            "text": "Our dog food provides superior nutrition and a patented probiotic for optimal nutrient absorption."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": "92%",
+            "text": "Our dog food's high protein and fat digestibility contribute to ideal stool quality."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
