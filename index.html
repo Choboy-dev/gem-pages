@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog nutrition that helps them live longer | Happy Dog Bites</title>
+    <meta
+      name="description"
+      content="Scientifically formulated, superfood-powered dog food. See what makes the recipe different, the nutrition stats behind it, and how it supports digestion."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <main id="content">
+      <section class="difference" aria-labelledby="difference-heading">
+        <div class="difference__inner">
+          <h2 class="difference__heading" id="difference-heading">
+            What makes us different makes them stronger
+          </h2>
+
+          <div class="difference__layout">
+            <ul class="difference__features">
+              <li class="difference__feature">
+                <img
+                  class="difference__icon"
+                  src="assets/icons/real-food.svg"
+                  alt=""
+                  width="60"
+                  height="60"
+                >
+                <div class="difference__copy">
+                  <h3 class="difference__title">Real Food</h3>
+                  <p class="difference__text">Wholesome recipes for dogs with real meat and veggies.</p>
+                </div>
+              </li>
+              <li class="difference__feature">
+                <img
+                  class="difference__icon"
+                  src="assets/icons/premium-ingredient.svg"
+                  alt=""
+                  width="60"
+                  height="60"
+                >
+                <div class="difference__copy">
+                  <h3 class="difference__title">Premium Ingredient</h3>
+                  <p class="difference__text">Elevating pet care with unmatched safety and quality.</p>
+                </div>
+              </li>
+            </ul>
+
+            <!-- First large image on the page, so it is not lazy-loaded. -->
+            <img
+              class="difference__bowl"
+              src="assets/difference-bowl.webp"
+              srcset="assets/difference-bowl-370.webp 370w, assets/difference-bowl.webp 740w"
+              sizes="(min-width: 1200px) 370px, (min-width: 768px) 30vw, 80vw"
+              width="370"
+              height="370"
+              alt="A bowl split between fresh meat, salmon and berries on one side and dry kibble on the other."
+              fetchpriority="high"
+              decoding="async"
+            >
+
+            <ul class="difference__features">
+              <li class="difference__feature">
+                <img
+                  class="difference__icon"
+                  src="assets/icons/made-fresh.svg"
+                  alt=""
+                  width="60"
+                  height="60"
+                >
+                <div class="difference__copy">
+                  <h3 class="difference__title">Made Fresh</h3>
+                  <p class="difference__text">We prioritize maintaining the integrity of whole foods and nutrition.</p>
+                </div>
+              </li>
+              <li class="difference__feature">
+                <img
+                  class="difference__icon"
+                  src="assets/icons/vet-developed.svg"
+                  alt=""
+                  width="60"
+                  height="60"
+                >
+                <div class="difference__copy">
+                  <h3 class="difference__title">Vet Developed</h3>
+                  <p class="difference__text">We raise the bar for dog nutrition, surpassing industry expectations.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="difference__actions">
+            <!-- TODO: replace href with the product URL. The Figma file has no link. -->
+            <a class="btn" href="#">Get your dog's healthy meal today!</a>
+            <div class="difference__assurance">
+              <p class="difference__guarantee">
+                <img
+                  src="assets/icons/shield-check.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                >
+                <span>30-day money back guarantee</span>
+              </p>
+              <ul class="difference__payments">
+                <li>
+                  <img src="assets/payments/paypal.webp" alt="PayPal" width="39" height="24">
+                </li>
+                <li>
+                  <img src="assets/payments/visa.webp" alt="Visa" width="39" height="24">
+                </li>
+                <li>
+                  <img src="assets/payments/mastercard.webp" alt="Mastercard" width="39" height="24">
+                </li>
+                <li>
+                  <img src="assets/payments/apple-pay.webp" alt="Apple Pay" width="39" height="24">
+                </li>
+                <li>
+                  <img src="assets/payments/google-pay.webp" alt="Google Pay" width="39" height="24">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="nutrition" aria-labelledby="nutrition-heading">
+        <div class="nutrition__grid">
+          <div class="nutrition__content">
+            <div class="nutrition__intro">
+              <h2 class="nutrition__heading" id="nutrition-heading">
+                Nutrition is the foundation for longer, healthier lives in dogs.
+              </h2>
+              <p class="nutrition__lead">
+                Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life.
+              </p>
+            </div>
+
+            <div class="nutrition__points">
+              <p class="nutrition__label" id="nutrition-points-label">Key Points:</p>
+              <ul class="nutrition__stats" aria-labelledby="nutrition-points-label">
+                <li class="nutrition__stat">
+                  <p class="nutrition__value">97%</p>
+                  <p class="nutrition__desc">Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor.</p>
+                </li>
+                <li class="nutrition__stat">
+                  <p class="nutrition__value">84%</p>
+                  <p class="nutrition__desc">Our dog food provides superior nutrition and a patented probiotic for optimal nutrient absorption.</p>
+                </li>
+                <li class="nutrition__stat">
+                  <p class="nutrition__value">92%</p>
+                  <p class="nutrition__desc">Our dog food's high protein and fat digestibility contribute to ideal stool quality.</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- TODO: replace href with the product URL. The Figma file has no link. -->
+            <a class="btn" href="#">Give your furry friend the gift of wholesome nutrition</a>
+          </div>
+
+          <img
+            class="nutrition__image"
+            src="assets/dog-nutrition.webp"
+            srcset="assets/dog-nutrition-570.webp 570w, assets/dog-nutrition.webp 1140w"
+            sizes="(min-width: 1200px) 570px, (min-width: 768px) 46vw, calc(100vw - 40px)"
+            width="570"
+            height="570"
+            alt="A tricolour dog licking its lips beside a bag of Happy Dog Bites."
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+      </section>
+
+      <section class="benefits" aria-label="Digestive health">
+        <div class="benefits__inner">
+          <article class="benefit benefit--media-first">
+            <div class="benefit__content">
+              <h2 class="benefit__heading" id="gi-heading">
+                Improve overall gastrointestinal health for better nutrient absorption
+              </h2>
+              <p class="benefit__text">
+                Through rigorous scientific studies and consultations with veterinarians, we have created a breakthrough formula exclusively tailored to combat the health challenges prevalent in dogs. A staggering 91% of our customers have reported significant improvements in their dogs' health after incorporating our product into their diet.
+              </p>
+            </div>
+            <img
+              class="benefit__image"
+              src="assets/gi-health.webp"
+              srcset="assets/gi-health-570.webp 570w, assets/gi-health.webp 1140w"
+              sizes="(min-width: 1200px) 570px, (min-width: 768px) 46vw, calc(100vw - 40px)"
+              width="570"
+              height="480"
+              alt="Two dachshunds eating from white bowls, with a bag of Happy Dog Bites between them."
+              loading="lazy"
+              decoding="async"
+            >
+          </article>
+
+          <article class="benefit">
+            <div class="benefit__content">
+              <h2 class="benefit__heading" id="prebiotic-heading">
+                Prebiotics nourish the beneficial gut bacteria, supporting digestive health
+              </h2>
+              <p class="benefit__text">
+                Our dog food formula contains carefully selected prebiotics that work in harmony with the gut microbiota, providing the necessary nutrients for the growth and maintenance of beneficial bacteria, ultimately supporting digestive health.
+              </p>
+            </div>
+            <img
+              class="benefit__image"
+              src="assets/prebiotics.webp"
+              srcset="assets/prebiotics-570.webp 570w, assets/prebiotics.webp 1140w"
+              sizes="(min-width: 1200px) 570px, (min-width: 768px) 46vw, calc(100vw - 40px)"
+              width="570"
+              height="480"
+              alt="A close-up of brown kibble."
+              loading="lazy"
+              decoding="async"
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

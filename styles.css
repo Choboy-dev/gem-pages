@@ -1,0 +1,485 @@
+/*
+  Tokens from Figma file Product page - POD (Copy) (Copy),
+  frame "Home page" (1920px). Desktop sizes lock in at 1200px.
+  Button and stat accent #EE6F4B is the file colour. It does not
+  meet WCAG AA for white button text (3.00:1). See README.
+*/
+
+:root {
+  --color-title: #161723;
+  --color-text: #424153;
+  --color-accent: #ee6f4b;
+  --color-accent-hover: #d66444;
+  --color-on-accent: #ffffff;
+  --color-canvas: #ffffff;
+  --color-surface: #f8f8f8;
+  --color-line: #e3e3e8;
+
+  --font-family: "Inter Tight", Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --text-heading: clamp(1.75rem, 0.9rem + 2.4vw, 2.5rem);
+  --text-stat: clamp(1.75rem, 1.2rem + 1.5vw, 2.0625rem);
+  --text-subhead: clamp(1.0625rem, 0.95rem + 0.4vw, 1.1875rem);
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+  --leading-heading: 1.2;
+  --leading-body: 1.5;
+  --tracking-heading: 0.25px;
+  --tracking-body: 0.5px;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --space-section: clamp(3rem, 2rem + 3vw, 5rem);
+  --space-page: 1.25rem;
+  --content-max: 1170px;
+  --column: 570px;
+  --radius-button: 6px;
+  --radius-media: 10px;
+
+  --shadow-button: 0 6px 16px rgba(22, 23, 35, 0.12);
+  --motion-duration: 180ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-title);
+  font-family: var(--font-family);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Off-screen until focused, so keyboard users can skip the first section. */
+.skip-link {
+  position: absolute;
+  left: var(--space-page);
+  top: 0;
+  transform: translateY(-120%);
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-title);
+  color: var(--color-on-accent);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0.75rem);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: var(--radius-button);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-body);
+  line-height: var(--leading-body);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease),
+    box-shadow var(--motion-duration) var(--motion-ease);
+}
+
+.btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-button);
+}
+
+.btn:focus-visible,
+.skip-link:focus-visible {
+  outline: 2px solid var(--color-title);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding-inline: 40px;
+  }
+}
+
+/* Shared measure: the Figma content column is 1170px on a 1920 canvas. */
+.difference__inner,
+.nutrition__grid,
+.benefits__inner {
+  width: min(var(--content-max), calc(100% - (var(--space-page) * 2)));
+  margin-inline: auto;
+}
+
+.difference__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-block: var(--space-section);
+}
+
+.difference__heading,
+.nutrition__heading,
+.benefit__heading {
+  font-size: var(--text-heading);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-title);
+}
+
+.difference__heading {
+  max-width: 536px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.difference__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.difference__features {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: min(100%, 370px);
+}
+
+.difference__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.difference__icon {
+  width: 60px;
+  height: 60px;
+  flex: none;
+}
+
+.difference__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.difference__title {
+  font-size: var(--text-subhead);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.difference__text,
+.nutrition__lead,
+.nutrition__desc,
+.benefit__text {
+  color: var(--color-text);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.difference__bowl {
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.difference__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 462px);
+}
+
+.difference__assurance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.difference__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  font-size: var(--text-caption);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.difference__guarantee img {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.difference__payments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.difference__payments img {
+  width: 39px;
+  height: 24px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+}
+
+.nutrition {
+  background: var(--color-surface);
+  padding-block: var(--space-section);
+}
+
+.nutrition__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nutrition__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.nutrition__intro,
+.nutrition__points,
+.benefit__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nutrition__label {
+  font-size: var(--text-subhead);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.nutrition__stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nutrition__stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nutrition__stat:not(:last-child) {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.nutrition__desc {
+  flex: 1;
+  min-width: 0;
+}
+
+.nutrition__value {
+  flex: none;
+  color: var(--color-accent);
+  font-size: var(--text-stat);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-heading);
+  white-space: nowrap;
+}
+
+.benefits__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 2rem + 3vw, 5rem);
+  padding-block: var(--space-section);
+}
+
+.benefit {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.benefit__image,
+.nutrition__image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-media);
+}
+
+.nutrition__image {
+  aspect-ratio: 1;
+}
+
+.benefit__image {
+  aspect-ratio: 570 / 480;
+}
+
+/*
+  Tablet keeps the desktop relationships and only tightens the gaps.
+  The difference row stays three columns so the bowl remains the centre.
+*/
+@media (min-width: 768px) {
+  :root {
+    --space-page: 1.5rem;
+  }
+
+  .difference__inner {
+    gap: 2.5rem;
+  }
+
+  .difference__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 280px) minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+
+  .difference__features {
+    gap: 2.5rem;
+    width: auto;
+  }
+
+  .difference__bowl {
+    width: 100%;
+    justify-self: center;
+  }
+
+  .nutrition__grid,
+  .benefit {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .nutrition__stat {
+    gap: 2rem;
+  }
+
+  /* Heading stays first in the HTML. From tablet up, the photo sits on the left. */
+  .benefit--media-first .benefit__image {
+    order: -1;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --space-page: 1.25rem;
+  }
+
+  .difference__inner,
+  .nutrition__content {
+    gap: 3rem;
+  }
+
+  .difference__layout {
+    grid-template-columns: 370px 370px 370px;
+    gap: 30px;
+    width: auto;
+  }
+
+  .difference__features {
+    gap: 5rem;
+    width: 370px;
+  }
+
+  .difference__bowl {
+    width: 370px;
+  }
+
+  .nutrition__grid {
+    grid-template-columns: var(--column) var(--column);
+    justify-content: center;
+    gap: 30px;
+  }
+
+  /* 32px sits on the side that faces the photo, matching the Figma column padding. */
+  .nutrition__content,
+  .benefit:not(.benefit--media-first) .benefit__content {
+    padding-right: 32px;
+  }
+
+  .benefit--media-first .benefit__content {
+    padding-left: 32px;
+  }
+
+  .benefit {
+    gap: 30px;
+  }
+
+  .nutrition__stat {
+    gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .skip-link {
+    transition: none;
+  }
+
+  .btn:hover,
+  .skip-link:focus {
+    transform: none;
+  }
+}
